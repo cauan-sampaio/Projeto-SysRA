@@ -3412,3 +3412,38 @@ JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 727: Error:
 JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 727: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
 JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 727: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
 Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+1685030139712	geckodriver	INFO	Listening on 127.0.0.1:34489
+1685030139779	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/usr ... te" "--remote-debugging-port" "54247" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileDxklBk"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1685030140901	Marionette	INFO	Marionette enabled
+1685030140906	Marionette	INFO	Listening on port 46541
+WebDriver BiDi listening on ws://localhost:54247
+Read port: 46541
+1685030141422	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileDxklBk/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:54247/devtools/browser/a453fd2c-2424-4cad-92ac-d94e0452bd47
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://sysra-h.maracanau.ifce.edu.br"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://sysra-h.maracanau.ifce.edu.br"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1685030164910	Marionette	INFO	Stopped listening on port 46541
+1685030468163	geckodriver	INFO	Listening on 127.0.0.1:36403
+1685030468211	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/usr ... te" "--remote-debugging-port" "54019" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileQfZfkI"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1685030468796	Marionette	INFO	Marionette enabled
+1685030468800	Marionette	INFO	Listening on port 37455
+WebDriver BiDi listening on ws://localhost:54019
+Read port: 37455
+1685030469184	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileQfZfkI/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:54019/devtools/browser/5f59f264-066f-4147-947e-5bea22b0ef96
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://sysra-h.maracanau.ifce.edu.br"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://sysra-h.maracanau.ifce.edu.br"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1685030492268	Marionette	INFO	Stopped listening on port 37455
+Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
