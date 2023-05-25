@@ -38,11 +38,14 @@ class LoginPage(Page):
 
 class AdmCardapio(LoginPage):
     def admcardapio(self):
-        self.login('111222333', '@Dev12345')  # Realizar login novamente antes de acessar a página desejada
+        self.login('111222333', '@Dev12345') 
         adm = self.driver.find_element(By.XPATH, '/html/body/div/div[2]/div[2]/ul/li[5]/div[1]')
         adm.click()
+        cardapio = self.driver.find_element(By.XPATH, '/html/body/div/div[2]/div[2]/ul/li[5]/div[2]/a[1]')
+        cardapio.click()
+        data = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[2]/div/div/div/div[2]/div[2]/div[1]/div[4]/a')
+        data.click()
 
-# Criar instância da classe AdmCardapio e executar a ação
 adm_cardapio = AdmCardapio()
 adm_cardapio.open_website('https://sysra-h.maracanau.ifce.edu.br/login')
 adm_cardapio.admcardapio()
