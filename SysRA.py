@@ -43,9 +43,30 @@ class AdmCardapio(LoginPage):
         adm.click()
         cardapio = self.driver.find_element(By.XPATH, '/html/body/div/div[2]/div[2]/ul/li[5]/div[2]/a[1]')
         cardapio.click()
-        data = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[2]/div/div/div/div[2]/div[2]/div[1]/div[4]/a')
+        data = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[2]/div/div/div/div[2]/div[2]/div[1]/div[3]/a')
         data.click()
+    def cafedamanha(self, gramas):
+        categoria = self.driver.find_element(By.XPATH,'/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/div/div/div/div[1]/div[2]')
+        categoria.click()
+        sleep(1)
+        alimento = self.driver.find_element(By.NAME, 'cafeDaManha.categoria')
+        sleep(1)
+        alimento.click()
+        botao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/span/span/div/div/button')
+        botao.click()
+        preparacao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]')
+        preparacao.click()
+        preparacaoChose = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[1]')
+        preparacaoChose.click()
+        gramas_element = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[2]/input')
+        gramas_element.click()
+        gramas_element.send_keys(gramas)
+
 
 adm_cardapio = AdmCardapio()
 adm_cardapio.open_website('https://sysra-h.maracanau.ifce.edu.br/login')
 adm_cardapio.admcardapio()
+adm_cardapio.cafedamanha()
+
+
+
