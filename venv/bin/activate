@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/bolsista/Documentos/GitHub/Projeto-SysRA/venv"
+VIRTUAL_ENV="/home/cauan/Documentos/GitHub/Projeto-SysRA/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

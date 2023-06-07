@@ -1,4 +1,4 @@
-#!/home/bolsista/Documentos/GitHub/Projeto-SysRA/venv/bin/python
+#!/home/cauan/Documentos/GitHub/Projeto-SysRA/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
