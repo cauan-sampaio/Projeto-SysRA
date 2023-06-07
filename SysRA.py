@@ -38,7 +38,7 @@ class AdmCardapio(LoginPage):
         
         adm = self.driver.find_element(By.XPATH, '/html/body/div/div[2]/div[2]/ul/li[5]/div[1]')
         adm.click()
-        
+        sleep(1)
         cardapio = self.driver.find_element(By.XPATH, '/html/body/div/div[2]/div[2]/ul/li[5]/div[2]/a[1]')
         cardapio.click()
         sleep(1)
@@ -51,33 +51,45 @@ class AdmCardapio(LoginPage):
     def navbar(self, tab_name):    
         navbar = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div/ul')
         if tab_name == 'lanche_manha':
-            navbar_select = navbar.find_element(By.XPATH, '//*[@id="react-aria9209103524-2-tab-lancheDaManha"]')
+            navbar_select = navbar.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div/ul/li[2]')
             navbar_select.click()
         
         elif tab_name == 'almoco':
-            navbar_select = navbar.find_element(By.XPATH, '//*[@id="react-aria9209103524-2-tab-almoco"]')
+            navbar_select = navbar.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div/ul/li[3]')
             navbar_select.click()
         
         elif tab_name == 'lanche_tarde':
-            navbar_select = navbar.find_element(By.XPATH, '//*[@id="react-aria9209103524-2-tab-lancheDaTarde"]')
+            navbar_select = navbar.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div/ul/li[4]')
             navbar_select.click()    
        
         elif tab_name == 'lanche_noite':
-            navbar_select = navbar.find_element(By.XPATH, '//*[@id="react-aria9209103524-2-tab-lancheDaNoite"]')
+            navbar_select = navbar.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div/ul/li[5]')
             navbar_select.click()
         
         elif tab_name == 'janta':
-            navbar_select = navbar.find_element(By.XPATH, '//*[@id="react-aria9209103524-2-tab-janta"]')
+            navbar_select = navbar.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div/ul/li[6]')
             navbar_select.click() 
+    def pressionar_seta(self, direction, num_teclas, pressionar_enter=True):
+        escolher = self.driver.find_element(By.XPATH, '/html/body')
+        keys = {
+            'up': Keys.ARROW_UP,
+            'down': Keys.ARROW_DOWN
+        }
+
+        if num_teclas > 0:
+            for _ in range(num_teclas):
+                escolher.send_keys(keys[direction])
+                sleep(1)
+        if (pressionar_enter==True):
+            escolher.send_keys(Keys.ENTER)
+            sleep(1)         
     
     def cafedamanha(self, gramas):
         categorias = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/div/div')
         categorias.click()
         sleep(1)
         
-        categorias_select = categorias.find_element(By.XPATH, '/html/body')
-        sleep(1)
-        categorias_select.send_keys(Keys.ENTER)
+        self.pressionar_seta('down', 2)
 
         botao_categoria = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/span/span/div/div/button')
         botao_categoria.click()
@@ -85,9 +97,7 @@ class AdmCardapio(LoginPage):
         preparacao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]')
         preparacao.click()
     
-        preparacaoChose = self.driver.find_element(By.XPATH, '/html/body')
-        sleep(1)
-        preparacaoChose.send_keys(Keys.ENTER)
+        self.pressionar_seta(None, 0)
     
         gramas_element = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[2]/input')
         
@@ -98,16 +108,152 @@ class AdmCardapio(LoginPage):
         sleep(3)
         grama_button.click()
    
-    def lanchedamanha(self):
+    def lanchedamanha(self, gramas):
         self.navbar('lanche_manha')
 
+        categorias = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/div/div/div/div[1]/div[2]')
+        categorias.click()
+        sleep(1)
+        
+        self.pressionar_seta(None, 0)
+        sleep(1)
 
+        botao_categoria = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/span/span/div/div/button')
+        botao_categoria.click()
+    
+        preparacao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]')
+        preparacao.click()
+    
+        self.pressionar_seta(None, 0)
+    
+        gramas_element = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[2]/input')
+        
+        gramas_element.send_keys(gramas)
+        sleep(1)
+        
+        grama_button = gramas_element.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/span/span/div/div/button')
+        sleep(3)
+        grama_button.click()
+    
+    def almoco(self, gramas):
+        self.navbar('almoco')
+
+        categorias = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/div/div/div/div[1]/div[2]')
+        categorias.click()
+        sleep(1)
+        
+        self.pressionar_seta('down', 2)
+
+        botao_categoria = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/span/span/div/div/button')
+        botao_categoria.click()
+    
+        preparacao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]')
+        preparacao.click()
+
+        self.pressionar_seta(None, 0)
+    
+        
+    
+        gramas_element = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[2]/input')
+        
+        gramas_element.send_keys(gramas)
+        sleep(1)
+        
+        grama_button = gramas_element.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/span/span/div/div/button')
+        sleep(3)
+        grama_button.click()
+    def lanchedatarde(self, gramas):
+        self.navbar('lanche_tarde')
+
+        categorias = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/div/div/div/div[1]/div[2]')
+        categorias.click()
+        sleep(1)
+        
+        self.pressionar_seta('down', 2)
+
+        botao_categoria = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/span/span/div/div/button')
+        botao_categoria.click()
+    
+        preparacao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]')
+        preparacao.click()
+    
+        self.pressionar_seta(None, 0)
+
+    
+        gramas_element = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[2]/input')
+        
+        gramas_element.send_keys(gramas)
+        sleep(1)
+        
+        grama_button = gramas_element.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/span/span/div/div/button')
+        sleep(3)
+        grama_button.click()
+    def lanchedanoite(self, gramas):
+        self.navbar('lanche_noite')
+
+        categorias = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/div/div/div/div[1]/div[2]')
+        categorias.click()
+        sleep(1)
+        
+        self.pressionar_seta('down', 2)
+
+        botao_categoria = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/span/span/div/div/button')
+        botao_categoria.click()
+    
+        preparacao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]')
+        preparacao.click()
+    
+        self.pressionar_seta(None, 0)    
+        gramas_element = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[2]/input')
+        
+        gramas_element.send_keys(gramas)
+        sleep(1)
+        
+        grama_button = gramas_element.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/span/span/div/div/button')
+        sleep(3)
+        grama_button.click()
+
+    def janta(self, gramas):
+        self.navbar('janta')
+
+        categorias = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/div/div/div/div[1]/div[2]')
+        categorias.click()
+        sleep(1)
+        
+        self.pressionar_seta('down', 2)
+
+        botao_categoria = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/span/span/div/div/button')
+        botao_categoria.click()
+    
+        preparacao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]')
+        preparacao.click()
+    
+        self.pressionar_seta(None, 0)
+    
+        gramas_element = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[2]/input')
+        
+        gramas_element.send_keys(gramas)
+        sleep(1)
+        
+        grama_button = gramas_element.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/span/span/div/div/button')
+        sleep(3)
+        grama_button.click()  
+        sleep(3)
+    def confirmar(self):
+        avancar = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[3]/div/div/button')      
+        avancar.click()
+        confirm = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div/div[2]/div[2]/button')
+        confirm.click()
 adm_cardapio = AdmCardapio()
 adm_cardapio.open_website('https://sysra-h.maracanau.ifce.edu.br/login')
 adm_cardapio.admcardapio()    
 adm_cardapio.cafedamanha('10')
-adm_cardapio.lanchedamanha
-
+adm_cardapio.lanchedamanha('10')
+adm_cardapio.almoco('10')
+adm_cardapio.lanchedatarde('10')
+adm_cardapio.lanchedanoite('10')
+adm_cardapio.janta('10')
+adm_cardapio.confirmar()
 
 
 
