@@ -43,7 +43,7 @@ class AdmCardapio(LoginPage):
         cardapio.click()
         sleep(1)
         
-        data = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[2]/div/div/div/div[2]/div[5]/div[1]/div[2]/a')
+        data = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[2]/div/div/div/div[2]/div[6]/div[1]/div[2]/a')
         self.driver.execute_script("arguments[0].scrollIntoView();", data )
         sleep(1)
         data.click()
@@ -69,7 +69,7 @@ class AdmCardapio(LoginPage):
         elif tab_name == 'janta':
             navbar_select = navbar.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div/ul/li[6]')
             navbar_select.click() 
-    def pressionar_seta(self, direction, num_teclas, pressionar_enter=True):
+    def pressionar_seta(self, direction, num_teclas, pressionar_enter=False):
         escolher = self.driver.find_element(By.XPATH, '/html/body')
         keys = {
             'up': Keys.ARROW_UP,
@@ -88,16 +88,17 @@ class AdmCardapio(LoginPage):
         categorias = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/div/div')
         categorias.click()
         sleep(1)
-        
-        self.pressionar_seta('down', 2)
+    
+        self.pressionar_seta(None, 0, pressionar_enter=True)
 
         botao_categoria = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/span/span/div/div/button')
         botao_categoria.click()
     
         preparacao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]')
         preparacao.click()
+        sleep(2)
     
-        self.pressionar_seta(None, 0)
+        self.pressionar_seta(None, 0, pressionar_enter=True)
     
         gramas_element = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[2]/input')
         
@@ -115,7 +116,7 @@ class AdmCardapio(LoginPage):
         categorias.click()
         sleep(1)
         
-        self.pressionar_seta(None, 0)
+        self.pressionar_seta(None, 0, pressionar_enter=True)
         sleep(1)
 
         botao_categoria = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/span/span/div/div/button')
@@ -123,8 +124,9 @@ class AdmCardapio(LoginPage):
     
         preparacao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]')
         preparacao.click()
+        sleep(2)
     
-        self.pressionar_seta(None, 0)
+        self.pressionar_seta(None, 0, pressionar_enter=True)
     
         gramas_element = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[2]/input')
         
@@ -142,15 +144,16 @@ class AdmCardapio(LoginPage):
         categorias.click()
         sleep(1)
         
-        self.pressionar_seta('down', 2)
+        self.pressionar_seta('down', 2, pressionar_enter=True)
 
         botao_categoria = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/span/span/div/div/button')
         botao_categoria.click()
     
         preparacao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]')
         preparacao.click()
+        sleep(2)
 
-        self.pressionar_seta(None, 0)
+        self.pressionar_seta(None, 0, pressionar_enter=True)
     
         
     
@@ -169,15 +172,16 @@ class AdmCardapio(LoginPage):
         categorias.click()
         sleep(1)
         
-        self.pressionar_seta('down', 2)
+        self.pressionar_seta('down', 2, pressionar_enter=True)
 
         botao_categoria = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/span/span/div/div/button')
         botao_categoria.click()
     
         preparacao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]')
         preparacao.click()
+        sleep(2)
     
-        self.pressionar_seta(None, 0)
+        self.pressionar_seta(None, 0, pressionar_enter=True)
 
     
         gramas_element = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[2]/input')
@@ -195,15 +199,17 @@ class AdmCardapio(LoginPage):
         categorias.click()
         sleep(1)
         
-        self.pressionar_seta('down', 2)
+        self.pressionar_seta('down', 2, pressionar_enter=True)
 
         botao_categoria = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/span/span/div/div/button')
         botao_categoria.click()
     
         preparacao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]')
         preparacao.click()
+        sleep(2)
     
-        self.pressionar_seta(None, 0)    
+        self.pressionar_seta(None, 0, pressionar_enter=True)    
+        
         gramas_element = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[2]/input')
         
         gramas_element.send_keys(gramas)
@@ -220,15 +226,16 @@ class AdmCardapio(LoginPage):
         categorias.click()
         sleep(1)
         
-        self.pressionar_seta('down', 2)
+        self.pressionar_seta('down', 2, pressionar_enter=True)
 
         botao_categoria = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/span/span/div/div/button')
         botao_categoria.click()
     
         preparacao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]')
         preparacao.click()
+        sleep(2)
     
-        self.pressionar_seta(None, 0)
+        self.pressionar_seta(None, 0, pressionar_enter=True)
     
         gramas_element = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div/div[2]/div[2]/input')
         
