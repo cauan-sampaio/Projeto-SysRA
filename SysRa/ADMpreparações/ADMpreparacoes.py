@@ -34,7 +34,7 @@ class LoginPage(Page):
         sleep(1)
 
 class AdmPreparacoes(LoginPage):
-    def admcardapio(self):
+    def admpreparacoes(self):
         self.login('111222333', '@Dev12345') 
         
         adm = self.driver.find_element(By.XPATH, '/html/body/div/div[2]/div[2]/ul/li[5]/div[1]')
@@ -72,8 +72,60 @@ class AdmPreparacoes(LoginPage):
 
         search = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[2]/div[2]/div[1]/form/div/div[3]/span/span/div/div/button')
         search.click()
+    def cadastrarpreparacao(self, nome_preparacao, peso_bruto, fator_correcao):   
+        novo = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[1]/div[3]/span/a/button')
+        novo.click()
+        sleep(1)
+
+        nome = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div/div[1]/div[2]/input')
+        nome.click()
+        nome.send_keys(nome_preparacao)
+
+        tipo = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div/div[2]/div[2]/div/div/div[1]/div[2]')
+        tipo.click()
+
+        self.pressionar_seta(None, 0, pressionar_enter=True)
+
+        gluten = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div/div[3]/div[2]/div/div/div[1]/div[2]')
+        gluten.click()
+
+        self.pressionar_seta(None, 0, pressionar_enter=True)    
+
+        lactose = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div/div[4]/div[2]/div/div/div[1]/div[2]')
+        lactose.click()
+
+        self.pressionar_seta(None, 0, pressionar_enter=True)
+
+        ingredientes_nome = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div[2]/div/div/div[1]/div[2]')
+        ingredientes_nome.click()
+        sleep(1)
+
+        self.pressionar_seta(None, 0, pressionar_enter=True)
+
+        pesobruto = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div[2]/input')
+        pesobruto.click()
+        pesobruto.send_keys(peso_bruto)
+        fatorcorrecao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[3]/div[2]/input')
+        fatorcorrecao.click()
+        fatorcorrecao.send_keys(fator_correcao)
+        sleep(1)
+        add = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[5]/button')
+        add.click()
+        sleep(1)
+
+        save = self.driver.find_element(By.CSS_SELECTOR, 'div.sc-gXmSlM:nth-child(2) > button:nth-child(1)')
+        self.driver.execute_script("arguments[0].scrollIntoView();", save )
+        sleep(1)
+        save.click()
+
+
+
+
+
 
 
 adm_preparacoes = AdmPreparacoes()
 adm_preparacoes.open_website('https://sysra-h.maracanau.ifce.edu.br/login')
+adm_preparacoes.admpreparacoes()
 adm_preparacoes.preparacoesfiltro('co')
+adm_preparacoes.cadastrarpreparacao('abacate lindo', '10', '876')

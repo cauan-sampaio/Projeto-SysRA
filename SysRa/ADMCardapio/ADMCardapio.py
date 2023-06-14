@@ -16,7 +16,7 @@ class LoginPage(Page):
     def login(self, name, senha):
         sleep(1)
         
-        name_element = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div[3]/form/div[1]/div/input')  
+        name_element = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div[3]/form/div[1]/div/inp7ut')  
         name_element.click()
         sleep(1)
         name_element.send_keys(name)   
