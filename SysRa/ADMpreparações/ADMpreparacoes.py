@@ -37,7 +37,7 @@ class AdmPreparacoes(LoginPage):
     def admpreparacoes(self):
         self.login('111222333', '@Dev12345') 
         
-        adm = self.driver.find_element(By.XPATH, '/html/body/div/div[2]/div[2]/ul/li[5]/div[1]')
+        adm = self.driver.find_element(By.XPATH, '/html/body/div/div[2]/div[2]/ul/li[5]')
         adm.click()
         sleep(3)
 
@@ -58,21 +58,15 @@ class AdmPreparacoes(LoginPage):
         if (pressionar_enter==True):
             escolher.send_keys(Keys.ENTER)
             sleep(1)             
-    def preparacoesfiltro(self, nome):
-        tipo = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[2]/div[2]/div[1]/form/div/div[1]/div[2]/div/div/div[1]')
-        tipo.click()
+  #  def preparacoesfiltro(self, nome):
+        # tipo = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[2]/div[2]/div[1]/form/div/div[1]/div[2]/div/div/div[1]')  
+        # tipo.click()
 
-        self.pressionar_seta(None, 0, pressionar_enter=True )
-        sleep(1)
-
-        descricao_element = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[2]/div[2]/div[1]/form/div/div[2]/div/div[2]/input')
-        descricao_element.click()
-        descricao_element.send_keys(nome)
-        sleep(1)
-
-        search = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[2]/div[2]/div[1]/form/div/div[3]/span/span/div/div/button')
-        search.click()
-    def cadastrarpreparacao(self, nome_preparacao, peso_bruto, fator_correcao):   
+        #self.pressionar_seta(None, 0, pressionar_enter=True )
+        
+        #search = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[2]/div[2]/div[1]/form/div/div[3]/span/span/div/div/button')
+        #search.click()
+    def cadastrarpreparacao(self, nome_preparacao, fator_correcao):   
         novo = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[1]/div[3]/span/a/button')
         novo.click()
         sleep(1)
@@ -84,7 +78,7 @@ class AdmPreparacoes(LoginPage):
         tipo = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div/div[2]/div[2]/div/div/div[1]/div[2]')
         tipo.click()
 
-        self.pressionar_seta(None, 0, pressionar_enter=True)
+        self.pressionar_seta('down', 3, pressionar_enter=True)
 
         gluten = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div/div[3]/div[2]/div/div/div[1]/div[2]')
         gluten.click()
@@ -100,11 +94,9 @@ class AdmPreparacoes(LoginPage):
         ingredientes_nome.click()
         sleep(1)
 
-        self.pressionar_seta(None, 0, pressionar_enter=True)
+        self.pressionar_seta('down', 6, pressionar_enter=True)
 
-        pesobruto = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[2]/div[2]/input')
-        pesobruto.click()
-        pesobruto.send_keys(peso_bruto)
+       
         fatorcorrecao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[3]/div[2]/input')
         fatorcorrecao.click()
         fatorcorrecao.send_keys(fator_correcao)
@@ -117,15 +109,67 @@ class AdmPreparacoes(LoginPage):
         self.driver.execute_script("arguments[0].scrollIntoView();", save )
         sleep(1)
         save.click()
+        sleep(3)
+
+        ok = self.driver.find_element(By.XPATH, '/html/body/div[2]/div/div[6]/button[1]')
+        ok.click()
+    def editarpreparacao(self, nome_preparacao1, ingredientes_nome, fator_correcao1):
+        body = self.driver.find_element(By.XPATH, '/html/body')
+        body.send_keys(Keys.PAGE_UP)
+        sleep(2)
+        edit = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[2]/div[2]/div[2]/div[1]/div/div/div[2]/div[2]/div[3]/a/span/span/div/div/button')
+        edit.click()
+       
+        nome = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div/div[1]/div[2]/input')
+        nome.click()
+        nome.send_keys(nome_preparacao1)
+
+        tipo = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div/div[2]/div[2]/div/div/div[1]/div[2]')
+        tipo.click()
+
+        self.pressionar_seta('down', 3, pressionar_enter=True)
+
+        gluten = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div/div[3]/div[2]/div/div/div[1]/div[2]')
+        gluten.click()
+
+        self.pressionar_seta(None, 0, pressionar_enter=True)    
+
+        lactose = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div/div[4]/div[2]/div/div/div[1]/div[2]')
+        lactose.click()
+
+        self.pressionar_seta(None, 0, pressionar_enter=True)
+
+        ingredientesnome = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div[2]/div/div/div[1]/div[2]')
+        ingredientesnome.click()
+        ingredientesnome.send_keys(ingredientes_nome)
 
 
+        sleep(1)
 
+        self.pressionar_seta('down', 3, pressionar_enter=True)
 
+       
+        fatorcorrecao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[3]/div[2]/input')
+        fatorcorrecao.click()
+        fatorcorrecao.send_keys(fator_correcao1)
+        sleep(1)
+        add = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[5]/button')
+        add.click()
+        sleep(1)
 
+        save = self.driver.find_element(By.CSS_SELECTOR, 'div.sc-gXmSlM:nth-child(2) > button:nth-child(1)')
+        self.driver.execute_script("arguments[0].scrollIntoView();", save )
+        sleep(1)
+        save.click()
+        sleep(3)
+
+        ok = self.driver.find_element(By.XPATH, '/html/body/div[2]/div/div[6]/button[1]')
+        ok.click()
 
 
 adm_preparacoes = AdmPreparacoes()
 adm_preparacoes.open_website('https://sysra-h.maracanau.ifce.edu.br/login')
 adm_preparacoes.admpreparacoes()
-adm_preparacoes.preparacoesfiltro('co')
-adm_preparacoes.cadastrarpreparacao('abacate lindo', '10', '876')
+#adm_preparacoes.preparacoesfiltro('co')
+adm_preparacoes.cadastrarpreparacao('vitamina de abacate10', '876')
+adm_preparacoes.editarpreparacao('Filé mingnon','carne', '90')
