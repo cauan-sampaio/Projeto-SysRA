@@ -118,8 +118,8 @@ class AdmPreparacoes(LoginPage):
         ok = self.driver.find_element(By.XPATH, '/html/body/div[2]/div/div[6]/button[1]')
         ok.click()
         '''
-    def editarpreparacao(self, nome_preparacao1, ingredientes_nome, fator_correcao1):
-        body = self.driver.find_element(By.XPATH, '/html/body')
+    def editarpreparacao(self, nome_preparacao1, fator_correcao1):
+        #body = self.driver.find_element(By.XPATH, '/html/body')
     
         sleep(2)
         edit = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[2]/div[2]/div[2]/div[1]/div/div/div[2]/div[1]/div[3]/a/span/span/div/div/button')
@@ -133,7 +133,7 @@ class AdmPreparacoes(LoginPage):
         tipo = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div/div[2]/div[2]/div/div/div[1]/div[2]')
         tipo.click()
 
-        self.pressionar_seta(None, 0, pressionar_enter=True)
+        self.pressionar_seta('down', 5, pressionar_enter=True)
 
         gluten = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div/div[3]/div[2]/div/div/div[1]/div[2]')
         gluten.click()
@@ -148,22 +148,32 @@ class AdmPreparacoes(LoginPage):
         ingredientes = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div[2]/div/div/div[1]')
         ingredientes.click()
         sleep(2)
-        body.send_keys(ingredientes_nome)
+       
 
 
-        sleep(1)
+        sleep(2)
 
-        self.pressionar_seta('down', 4, pressionar_enter=True)
+        self.pressionar_seta(None, 0, pressionar_enter=True)
 
        
         fatorcorrecao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[3]/div[2]/input')
         fatorcorrecao.click()
         fatorcorrecao.send_keys(fator_correcao1)
         sleep(1)
+        delete = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/div/div[1]/div/div/div[2]/div[1]/div[5]/span/span/div/div/button')
+        delete.click()
+        sleep(2)
+        delete_confirm = self.driver.find_element(By.XPATH, '/html/body/div[3]/div/div/div[3]/div[2]/button')
+        delete_confirm.click()
+        
+        
         add = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[5]/button')
         add.click()
         sleep(1)
 
+    
+        
+  
         save = self.driver.find_element(By.CSS_SELECTOR, 'div.sc-gXmSlM:nth-child(2) > button:nth-child(1)')
         self.driver.execute_script("arguments[0].scrollIntoView();", save )
         sleep(1)
@@ -179,4 +189,4 @@ adm_preparacoes.open_website('https://sysra-h.maracanau.ifce.edu.br/login')
 adm_preparacoes.admpreparacoes()
 #adm_preparacoes.preparacoesfiltro('co')
 #adm_preparacoes.cadastrarpreparacao('vitamina de abacate12', '876')
-adm_preparacoes.editarpreparacao('Filé mingnon3','Filé', '90')
+adm_preparacoes.editarpreparacao('Abacate bom', '1534')
