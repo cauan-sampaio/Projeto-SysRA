@@ -62,7 +62,7 @@ class AdmUsuarios(LoginPage):
             escolher.send_keys(Keys.ENTER)
             sleep(1)         
     
-    def adicionarusers(self, nome_element, nomesocial_element, email_element, indentificacao_element):
+    def adicionarusers(self, nome_element, nomesocial_element, email_element, telefone_element, cartao_element, indentificacao_element):
         novo = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[1]/div[3]/span/a/div/button')
         novo.click()
         sleep(2)
@@ -83,6 +83,18 @@ class AdmUsuarios(LoginPage):
         email.send_keys(email_element)
         sleep(1)
 
+        telefone = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div[1]/div[2]/div/div[5]/div[2]/input')
+        telefone.click()
+        telefone.send_keys(telefone_element)
+
+        cartao = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div[1]/div[2]/div/div[6]/div[2]/input')
+        cartao.click()
+        cartao.send_keys(cartao_element)
+        '''
+        cpf = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div[1]/div[2]/div/div[4]/div[2]/input')
+        cpf.click()
+        cpf.send_keys(cpf_element)
+        '''
         novo_cadastro = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div/div/div[2]/div/button')
         novo_cadastro.click()
         sleep(2)
@@ -134,4 +146,4 @@ class AdmUsuarios(LoginPage):
 adm_usuarios = AdmUsuarios()
 adm_usuarios.open_website('https://sysra-h.maracanau.ifce.edu.br/login') 
 adm_usuarios.admusuarios()    
-adm_usuarios.adicionarusers('Hans', 'Vocalista do Blind Guardian', 'cauansampaio255@gmail.com', '20221')   
+adm_usuarios.adicionarusers('Hans1', 'Vocalista do Blind Guardian', 'cauansampaio244@gmail.com', '85982309576', '023898', '202211242345')   
