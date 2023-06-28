@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 from time import sleep
 
+
 class Page:
     def __init__(self):
         self.driver = webdriver.Firefox()
@@ -85,6 +86,7 @@ class AdmCardapio(LoginPage):
             sleep(1)         
     
     def cafedamanha(self, gramas):
+        body = self.driver.find_element(By.XPATH, '/html/body')
         categorias = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[2]/div[2]/form/div/div[1]/div/div[2]/div/div')
         categorias.click()
         sleep(1)
