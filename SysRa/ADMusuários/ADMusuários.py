@@ -23,7 +23,7 @@ class LoginPage(Page):
         sleep(1)
         name_element.send_keys(name)   
         sleep(1)
-        
+     
         senha_element = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div[3]/form/div[2]/div/input')
         senha_element.click()
         sleep(1)
