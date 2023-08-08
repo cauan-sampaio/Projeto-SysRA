@@ -15,27 +15,28 @@ class Page:
 
 class LoginPage(Page):
     def login(self, name, senha):
-        sleep(1)
+        sleep(2)
         
-        name_element = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div[3]/form/div[1]/div/inp7ut')  
+        name_element = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div[2]/div[2]/form/div[1]/div/input')  
         name_element.click()
         sleep(1)
         name_element.send_keys(name)   
         sleep(1)
         
-        senha_element = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div[3]/form/div[2]/div/input')
+        senha_element = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div[2]/div[2]/form/div[2]/div/input')
         senha_element.click()
         sleep(1)
         senha_element.send_keys(senha)
+        sleep(1)
         
-        logar = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div[3]/form/div[4]/div/button')
+        logar = self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div[2]/div[2]/form/div[4]/div/button')
         sleep(1)
         logar.click()
         sleep(1)
 
 class AdmCardapio(LoginPage):
     def admcardapio(self):
-        self.login('111222333', '@Dev12345') 
+        self.login('20221045050443', '87489308Ca#') 
         
         adm = self.driver.find_element(By.XPATH, '/html/body/div/div[2]/div[2]/ul/li[5]/div[1]')
         adm.click()
