@@ -52,7 +52,8 @@ class AdmCursos(LoginPage):
         curso = context.browser.find_element(By.XPATH, '/html/body/div/div[2]/div[2]/ul/li[5]/div[2]/a[5]')
         curso.click()
 
-    @given('O usuário entra na página de cursos')
+class criarCurso(AdmCursos):   
+    
     def pressionar_seta(context, direction, num_teclas, pressionar_enter=False):
         escolher = context.browser.find_element(By.XPATH, '/html/body')
         keys = {
@@ -68,7 +69,7 @@ class AdmCursos(LoginPage):
             escolher.send_keys(Keys.ENTER)
             sleep(1)    
 
-    
+    @given('O usuário entra na página de cursos')
     def novocurso(context):
             sleep(3)
             novo = context.browser.find_element(By.XPATH, '/html/body/div/div[1]/div/div[1]/div[3]/span/div/button')
