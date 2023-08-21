@@ -11,7 +11,7 @@ Feature: ADM cursos
             """ 
             Then O usuário entrará na página inicial e irá clicar em ADM, e depois em cursos
         
-        Scenario:Cria curso
+        Scenario:Criar curso
             Given O usuário entra na página de cursos
             When O usuário clicar no botão para criar um novo curso
 

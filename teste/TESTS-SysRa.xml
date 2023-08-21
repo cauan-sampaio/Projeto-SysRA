@@ -1,0 +1,45 @@
+<testsuite name="SysRa.ADM cursos" tests="2" errors="1" failures="0" skipped="0" time="68.981195" timestamp="2023-08-21T15:33:06.037847" hostname="BL3-LATIM-27"><testcase classname="SysRa.ADM cursos" name="O usuário irá logar na conta e criar um curso" status="passed" time="68.748347"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: O usuário irá logar na conta e criar um curso
+    Given O usuário entra na página de login ... passed in 39.337s
+    When O usuário digitar os seus dados de login ... passed in 10.997s
+      """
+      {
+      "matricula": "20221045050443",
+      "senha":"87489308Ca#"
+      } 
+      """
+    Then O usuário entrará na página inicial e irá clicar em ADM, e depois em cursos ... passed in 18.414s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="SysRa.ADM cursos" name="Criar curso" status="failed" time="0.232849"><error type="TypeError" message="AdmCursos.pressionar_seta() missing 2 required positional arguments: 'direction' and 'num_teclas'">
+<![CDATA[
+Failing step: Given O usuário entra na página de cursos ... failed in 0.233s
+Location: features/SysRa.feature:15
+Traceback (most recent call last):
+  File "/home/cauan/Documentos/GitHub/Projeto-SysRA/venv/lib/python3.10/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/home/cauan/Documentos/GitHub/Projeto-SysRA/venv/lib/python3.10/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+TypeError: AdmCursos.pressionar_seta() missing 2 required positional arguments: 'direction' and 'num_teclas'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Criar curso
+    Given O usuário entra na página de cursos ... failed in 0.233s
+    When O usuário clicar no botão para criar um novo curso ... skipped in 0.000s
+      """
+      {
+      "curso": "Técnico em ADM"
+      }
+      """
+    Then O usuário criou o novo curso ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

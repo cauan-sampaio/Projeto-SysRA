@@ -69,7 +69,7 @@ class AdmUsuarios(LoginPage):
         sleep(2)
         wait = WebDriverWait(self.driver, 2)
 
-        nome = self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/input')
+        nome =/html/body/div/div[1]/div/div[1]/div[3]/span/div/button self.driver.find_element(By.XPATH, '/html/body/div/div[1]/div/form/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/input')
         nome.click()
         nome.send_keys(nome_element)
         sleep(1)
