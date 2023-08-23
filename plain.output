@@ -1,31 +1,47 @@
 Feature: ADM cursos
 
   Scenario: O usuário irá logar na conta e criar um curso
-    Given O usuário entra na página de login ... passed in 10.016s
-    When O usuário digitar os seus dados de login ... passed in 10.894s
+    Given O usuário entra na página de login ... passed in 11.743s
+    When O usuário digitar os seus dados de login ... passed in 10.915s
       """
       {
       "matricula": "20221045050443",
       "senha":"87489308Ca#"
       } 
       """
-    Then O usuário entrará na página inicial e irá clicar em ADM, e depois em cursos ... passed in 2.721s
-    Given O usuário entra na página de cursos ... passed in 5.326s
-    When O usuário clicar no botão para criar um novo curso ... failed in 1.533s
+    Then O usuário entrará na página inicial e irá clicar em ADM, e depois em cursos ... passed in 2.770s
+    Given O usuário entra na página de cursos ... passed in 5.354s
+    When O usuário clicar no botão para criar um novo curso ... passed in 6.347s
+      """
+      {
+      "curso": "Técnico em ADM 1"
+      }
+      """
+    Then O usuário criou o novo curso ... failed in 0.018s
 Traceback (most recent call last):
   File "/home/cauan/Documentos/GitHub/Projeto-SysRA/venv/lib/python3.10/site-packages/behave/model.py", line 1329, in run
     match.run(runner.context)
   File "/home/cauan/Documentos/GitHub/Projeto-SysRA/venv/lib/python3.10/site-packages/behave/matchers.py", line 98, in run
     self.func(context, *args, **kwargs)
-  File "features/steps/steps.py", line 90, in criarcurso
-    context.pressionar_seta(None, 0, pressionar_enter=True)
-  File "/home/cauan/Documentos/GitHub/Projeto-SysRA/venv/lib/python3.10/site-packages/behave/runner.py", line 321, in __getattr__
-    raise AttributeError(msg)
-AttributeError: 'Context' object has no attribute 'pressionar_seta'
+  File "features/steps/steps.py", line 97, in salvarcurso
+    salvar.click()
+  File "/home/cauan/Documentos/GitHub/Projeto-SysRA/venv/lib/python3.10/site-packages/selenium/webdriver/remote/webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/home/cauan/Documentos/GitHub/Projeto-SysRA/venv/lib/python3.10/site-packages/selenium/webdriver/remote/webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "/home/cauan/Documentos/GitHub/Projeto-SysRA/venv/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py", line 346, in execute
+    self.error_handler.check_response(response)
+  File "/home/cauan/Documentos/GitHub/Projeto-SysRA/venv/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: Element <button class="btn btn-primary" type="submit"> is not clickable at point (947,520) because another element <div class="swal2-popup swal2-modal popup-sweet-alert swal2-icon-error swal2-show"> obscures it
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:187:5
+ElementClickInterceptedError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:331:5
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:162:11
+interaction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:121:11
+clickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:204:29
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:86:31
 
-      """
-      {
-      "curso": "Técnico em ADM"
-      }
-      """
+
 

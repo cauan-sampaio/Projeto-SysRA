@@ -12,10 +12,10 @@ from selenium.webdriver.firefox.options import Options
 class Page():
     @given('O usuário entra na página de login')
     def go_to_page(context):
-        firefox_options = Options()
-        firefox_options.headless = True
+        #firefox_options = Options()
+        #firefox_options.headless = True
 
-        context.browser = webdriver.Firefox(options=firefox_options)
+        context.browser = webdriver.Firefox()
         context.browser.get('https://sysra-h.maracanau.ifce.edu.br/login')
 
 
@@ -53,7 +53,7 @@ class AdmCursos(LoginPage):
         curso.click()
 
 class criarCurso(AdmCursos):   
-    
+    """
     def pressionar_seta(context, direction, num_teclas, pressionar_enter=False):
         escolher = context.browser.find_element(By.XPATH, '/html/body')
         keys = {
@@ -68,7 +68,7 @@ class criarCurso(AdmCursos):
         if (pressionar_enter==True):
             escolher.send_keys(Keys.ENTER)
             sleep(1)    
-
+    """
     @given('O usuário entra na página de cursos')
     def novocurso(context):
             sleep(3)
@@ -78,16 +78,18 @@ class criarCurso(AdmCursos):
     
     @when('O usuário clicar no botão para criar um novo curso')
     def criarcurso(context):
+            body = context.browser.find_element(By.XPATH, '/html/body')
             texto_do_step = loads(context.text)
             curso = context.browser.find_element(By.XPATH, '/html/body/div[3]/div/div/div[2]/form/div[1]/div/div[2]/input')
             curso.click()
             curso.send_keys(texto_do_step['curso'])
             sleep(1)
 
-            tipo = context.browser.find_element(By.XPATH, '/html/body/div[3]/div/div/div[2]/form/div[2]/div/div[2]/div/div')
-            tipo.click()
-
-            context.pressionar_seta(None, 0, pressionar_enter=True)
+            #tipo = context.browser.find_element(By.XPATH, '/html/body/div[3]/div/div/div[2]/form/div[2]/div/div[2]/div/div')
+            #tipo.click()
+            sleep(2)
+            body.send_keys(Keys.ENTER)
+            
             sleep(3)
     @then('O usuário criou o novo curso')
     def salvarcurso(context):

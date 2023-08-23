@@ -17,7 +17,7 @@ Feature: ADM cursos
 
             """
             {
-            "curso": "Técnico em ADM"
+            "curso": "Técnico em ADM 1"
             }
             """ 
             Then O usuário criou o novo curso
